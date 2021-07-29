@@ -1,0 +1,12 @@
+version: '3'
+services:
+  shield_server:
+    build:
+      context: './'
+      dockerfile: 'Dockerfile'
+    ports:
+      - "80:8000"
+    restart: always
+    volumes:
+      - /dev/ext4/:/extdisk
+      - /home/pi/dump.rdb:/app/dump.rdb
