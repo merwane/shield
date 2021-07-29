@@ -17,6 +17,7 @@ pyinquirer = "*"
 pyfiglet = "*"
 colorama = "*"
 tqdm = "*"
+gunicorn = "*"
 
 [dev-packages]
 

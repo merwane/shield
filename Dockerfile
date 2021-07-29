@@ -5,8 +5,10 @@ RUN apt-get update
 RUN apt-get install -y python3-pip
 RUN apt-get install -y redis-server
 RUN apt-get install -y locales 
+RUN apt-get install -y build-essential libssl-dev libffi-dev python3-dev cargo
 
 COPY requirements.txt /
+RUN pip3 install setuptools_rust
 RUN pip3 install -r /requirements.txt
 
 COPY . ./app

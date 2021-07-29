@@ -20,7 +20,7 @@ if platform.system() == "Darwin":
     API_URL = os.getenv("API_URL")
 elif platform.system() == "Linux":
     # RPi
-    FILES_PATH = "/extdisk"
+    FILES_PATH = "/extdisk/files/"
     DISK_PATH = "/extdisk"
     API_URL = "http://shield.local"
 

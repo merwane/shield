@@ -9,4 +9,3 @@ services:
     restart: always
     volumes:
       - /mnt/ext/:/extdisk
-      - /home/pi/dump.rdb:/app/dump.rdb
