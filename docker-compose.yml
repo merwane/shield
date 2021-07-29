@@ -8,5 +8,5 @@ services:
       - "80:8000"
     restart: always
     volumes:
-      - /dev/ext4/:/extdisk
+      - /mnt/ext/:/extdisk
       - /home/pi/dump.rdb:/app/dump.rdb
