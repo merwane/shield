@@ -11,7 +11,12 @@ def list_files(extension=None, filenames_only=False):
         files = glob.glob("{}/*.{}".format(FILES_PATH, extension))
     
     if filenames_only == False:
-        pass
+        filenames = []
+        for path in files:
+            if os.path.isdir(path):
+                pass
+            else:
+                filenames.append(path)
     else:
         filenames = []
         for path in files:
@@ -20,10 +25,8 @@ def list_files(extension=None, filenames_only=False):
                 pass
             else:
                 filenames.append(basename)
-        
-        files = filenames
 
-    return files
+    return filenames
 
 def list_files_with_props():
     files = []
