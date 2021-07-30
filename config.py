@@ -6,6 +6,8 @@ import os
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
+TEST_MODE = False
+
 REDIS_HOST = "localhost"
 REDIS_PORT = "6379"
 REDIS_URI = "redis://{}:{}".format(REDIS_HOST, REDIS_PORT)
@@ -15,12 +17,17 @@ RQ_PORT = "6379"
 
 # Mac
 if platform.system() == "Darwin":
-    FILES_PATH = os.getenv('FILES_PATH')
-    DISK_PATH = os.getenv('DISK_PATH')
-    API_URL = os.getenv("API_URL")
+    if TEST_MODE == True:
+        FILES_PATH = os.getenv('FILES_PATH')
+        DISK_PATH = os.getenv('DISK_PATH')
+        API_URL = os.getenv("API_URL")
+    else:
+        FILES_PATH = "/extdisk/files/"
+        DISK_PATH = "/extdisk"
+        API_URL = "http://shield.local"
 elif platform.system() == "Linux":
     # RPi
-    FILES_PATH = "/extdisk/files/"
+    FILES_PATH = "/extdisk/files"
     DISK_PATH = "/extdisk"
     API_URL = "http://shield.local"
 
