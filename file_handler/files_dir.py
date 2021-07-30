@@ -16,7 +16,10 @@ def list_files(extension=None, filenames_only=False):
         filenames = []
         for path in files:
             basename = os.path.basename(path)
-            filenames.append(basename)
+            if os.path.isdir(path):
+                pass
+            else:
+                filenames.append(basename)
         
         files = filenames
 
