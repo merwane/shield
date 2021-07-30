@@ -5,11 +5,11 @@ class ShieldPassword:
     def __init__(self):
         self.password_hash = ""
         # check if password hash file exists
-        is_file = os.path.isfile("hashed_password.key")
+        is_file = os.path.isfile("~/keys/hashed_password.key")
         self.is_file = is_file
 
         if is_file:
-            self.password_hash = open("hashed_password.key", "rb").read()
+            self.password_hash = open("~/keys/hashed_password.key", "rb").read()
         else:
             pass
 
@@ -19,7 +19,7 @@ class ShieldPassword:
         return self.password_hash
 
     def save_password(self):
-        with open("hashed_password.key", "wb") as password_file:
+        with open("~/keys/hashed_password.key", "wb") as password_file:
                 password_hash = self.password_hash.encode()
                 password_file.write(password_hash)
 
