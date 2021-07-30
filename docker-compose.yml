@@ -8,4 +8,4 @@ services:
       - "80:8000"
     restart: always
     volumes:
-      - /mnt/ext/:/extdisk
+      - /mnt/ext/:/extdisk/files
