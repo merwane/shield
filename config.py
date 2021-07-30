@@ -22,13 +22,13 @@ if platform.system() == "Darwin":
         DISK_PATH = os.getenv('DISK_PATH')
         API_URL = os.getenv("API_URL")
     else:
-        FILES_PATH = "/extdisk/files/"
-        DISK_PATH = "/extdisk"
+        FILES_PATH = "/extdisk/files"
+        DISK_PATH = "/extdisk/files"
         API_URL = "http://shield.local"
 elif platform.system() == "Linux":
     # RPi
     FILES_PATH = "/extdisk/files"
-    DISK_PATH = "/extdisk"
+    DISK_PATH = "/extdisk/files"
     API_URL = "http://shield.local"
 
 ENCRYPTION_KEY = os.getenv('ENCRYPTION_KEY')
