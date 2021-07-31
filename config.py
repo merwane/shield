@@ -6,7 +6,7 @@ import os
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-TEST_MODE = False
+TEST_MODE = os.getenv("TEST_MODE")
 
 REDIS_HOST = "localhost"
 REDIS_PORT = "6379"
@@ -17,7 +17,7 @@ RQ_PORT = "6379"
 
 # Mac
 if platform.system() == "Darwin":
-    if TEST_MODE == True:
+    if TEST_MODE == "1":
         FILES_PATH = os.getenv('FILES_PATH')
         DISK_PATH = os.getenv('DISK_PATH')
         API_URL = os.getenv("API_URL")
