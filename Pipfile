@@ -18,7 +18,6 @@ pyfiglet = "*"
 colorama = "*"
 tqdm = "*"
 gunicorn = "*"
-pysondb = "*"
 
 [dev-packages]
 
