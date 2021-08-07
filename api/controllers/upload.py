@@ -4,6 +4,8 @@ from services.queue_config import JobQueue
 from config import FILES_PATH
 from flask import request
 import werkzeug
+import uuid
+import os
 
 # job queue
 job_queue = JobQueue('default')
@@ -22,7 +24,9 @@ class UploadFile(Resource):
         all_files = args.get('file')
         filenames = []
         for f in all_files:
-            filename = f.filename
+            file_extension = os.path.splitext(f.filename)[1]
+            file_uid = uuid.uuid4().hex
+            filename = "{}{}".format(file_uid, file_extension)
             f.save("{}/{}".format(FILES_PATH, filename))
          
             # encrypt file
