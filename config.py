@@ -25,12 +25,12 @@ if OPERATING_SYSTEM == "Darwin":
     else:
         FILES_PATH = "/extdisk/files"
         DISK_PATH = "/extdisk/files"
-        API_URL = "http://shield.local"
+        API_URL = "http://shield.local:8000"
 elif OPERATING_SYSTEM == "Linux":
     # RPi
     FILES_PATH = "/extdisk/files"
     DISK_PATH = "/extdisk/files"
-    API_URL = "http://shield.local"
+    API_URL = "http://shield.local:8000"
 
 ENCRYPTION_KEY = os.getenv('ENCRYPTION_KEY')
 DOWNLOADS_FOLDER = "/Users/merwane/Downloads"
