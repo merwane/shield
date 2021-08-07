@@ -18,7 +18,14 @@ class ListAllFiles(Resource):
 class DeleteFile(Resource):
     def delete(self):
         filename = request.json['filename']
-        name = "{}/{}".format(FILES_PATH, filename)
-        queue.enqueue(delete_file, name, result_ttl=0)
 
-        return name
+        if type(filename) == str:
+            name = "{}/{}".format(FILES_PATH, filename)
+            queue.enqueue(delete_file, name, result_ttl=0)
+
+        elif type(filename) == list:
+            for f in filename:
+                name = "{}/{}".format(FILES_PATH, f)
+                queue.enqueue(delete_file, name, result_ttl=0)
+
+        return True
