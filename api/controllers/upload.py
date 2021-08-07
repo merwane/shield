@@ -11,7 +11,7 @@ queue = job_queue.queue()
 
 class UploadFile(Resource):
     def post(self):
-        key = request.headers.get('Authorization')
+        # key = request.headers.get('Authorization')
 
         parse = reqparse.RequestParser()
         parse.add_argument('file',
@@ -26,7 +26,7 @@ class UploadFile(Resource):
             f.save("{}/{}".format(FILES_PATH, filename))
          
             # encrypt file
-            queue.enqueue(encrypt_file, filename, key, result_ttl=0)
+            # queue.enqueue(encrypt_file, filename, key, result_ttl=0)
             filenames.append(filename)
 
         return filenames

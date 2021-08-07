@@ -11,9 +11,9 @@ def main():
     device_monitor.display()
     print("\n")
     # password check
-    password_check = access.password_check()
-    if password_check == True:
-        pass
+    # password_check = access.password_check()
+    # if password_check == True:
+    #    pass
 
     print("\n")
     list_files.all()

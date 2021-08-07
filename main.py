@@ -4,7 +4,7 @@ from flask_cors import CORS
 
 # methods
 from api.controllers.upload import UploadFile
-from api.controllers.download import DownloadFile, DownloadFileEncrypted
+from api.controllers.download import DownloadFile
 from api.controllers.files import ListAllFiles, DeleteFile
 from api.controllers.device import DiskMonitor, DeviceMonitor
 from api.controllers.access import AccessAuthorization, CreatePassword
@@ -16,7 +16,6 @@ api = Api(app)
 
 api.add_resource(UploadFile, "/")
 api.add_resource(DownloadFile, "/<string:filename>")
-api.add_resource(DownloadFileEncrypted, "/enc/<string:filename>")
 api.add_resource(DeleteFile, "/<string:filename>")
 
 api.add_resource(ListAllFiles, "/files")
