@@ -60,9 +60,9 @@ class ShieldApi:
         filename = filename['filename']
         filename = filename.replace(" ", "")
 
-        endpoint = "{}/{}".format(self.api_url, filename)
+        endpoint = "{}/".format(self.api_url)
         try:
-            r = requests.get(endpoint, headers={'Authorization': ENCRYPTION_KEY}, stream=True)
+            r = requests.get(endpoint, stream=True, json={'filename': filename})
             total = int(r.headers.get('content-length', 0))
         except ConnectionError:
             print("Error connecting to the Shield server... \n")
@@ -91,9 +91,9 @@ class ShieldApi:
         filename = filename['filename']
         filename = filename.replace(" ", "")
 
-        endpoint = "{}/{}".format(self.api_url, filename)
+        endpoint = "{}/".format(self.api_url)
         try:
-            r = requests.delete(endpoint)
+            r = requests.delete(endpoint, json={"filename": filename})
         except ConnectionError:
             print("Error connecting to the Shield server... \n")
             exit()

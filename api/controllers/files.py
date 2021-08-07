@@ -2,6 +2,7 @@ from flask_restful import Resource
 from file_handler.files_dir import list_files_with_props
 from services.queue_config import JobQueue
 from file_handler.manage import delete_file
+from flask import request
 from config import FILES_PATH
 
 # job queue
@@ -15,7 +16,8 @@ class ListAllFiles(Resource):
         return all_files
 
 class DeleteFile(Resource):
-    def delete(self, filename):
+    def delete(self):
+        filename = request.json['filename']
         name = "{}/{}".format(FILES_PATH, filename)
         queue.enqueue(delete_file, name, result_ttl=0)
 

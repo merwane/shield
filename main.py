@@ -15,8 +15,8 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 api = Api(app)
 
 api.add_resource(UploadFile, "/")
-api.add_resource(DownloadFile, "/<string:filename>")
-api.add_resource(DeleteFile, "/<string:filename>")
+api.add_resource(DownloadFile, "/")
+api.add_resource(DeleteFile, "/")
 
 api.add_resource(ListAllFiles, "/files")
 
