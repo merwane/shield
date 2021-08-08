@@ -8,6 +8,7 @@ RUN apt-get install -y locales
 RUN apt-get install -y build-essential libssl-dev libffi-dev python3-dev
 
 COPY requirements.txt /
+RUN pip3 install setuptools==22.2.1
 RUN pip3 install -r /requirements.txt
 
 COPY . ./app
