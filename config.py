@@ -9,6 +9,9 @@ load_dotenv(dotenv_path)
 TEST_MODE = os.getenv("TEST_MODE")
 OPERATING_SYSTEM = platform.system()
 
+DATABASE_HOST = os.getenv('DATABASE_HOST')
+DATABASE_CLIENT = os.getenv('DATABASE_CLIENT')
+
 REDIS_HOST = "localhost"
 REDIS_PORT = "6379"
 REDIS_URI = "redis://{}:{}".format(REDIS_HOST, REDIS_PORT)

@@ -18,6 +18,8 @@ pyfiglet = "*"
 colorama = "*"
 tqdm = "*"
 gunicorn = "*"
+pymongo = {extras = ["srv"],version = "*"}
+mongoengine = "*"
 
 [dev-packages]
 
