@@ -11,7 +11,7 @@ services:
       - /mnt/ext/:/extdisk/files
       - ~/keys:/keys
   mongodb_server:
-    image: mongo:latest
+    image: mongo:bionic
     environment:
       MONGO_INITDB_ROOT_USERNAME: god
       MONGO_INITDB_ROOT_PASSWORD: god123
