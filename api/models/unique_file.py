@@ -5,5 +5,5 @@ class UniqueFile(Document):
     filename = StringField()
     file_size = FloatField(default=0) # megabytes by default
     file_type = StringField()
-    # TODO: add labels ListField for image classification
+    labels = ListField(default=[])
     added_at = DateTimeField(default=datetime.datetime.utcnow)

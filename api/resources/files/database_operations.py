@@ -6,6 +6,7 @@ client = Database()
 database = client.light()
 
 def add_file(filename, file_size, file_type):
+    # TODO: add image analysis here if it's a picture and save labels
     unique_file = UniqueFile(
         filename=filename,
         file_size=file_size,
