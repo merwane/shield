@@ -3,6 +3,11 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
+[[source]]
+url = "https://torch.kmtea.eu/whl/stable.html"
+verify_ssl = true
+name = "torcharm"
+
 [packages]
 rq = "1.8.1"
 redis = "*"
@@ -19,10 +24,10 @@ tqdm = "*"
 gunicorn = "*"
 pymongo = {extras = ["srv"],version = "*"}
 mongoengine = "*"
-torch = "*"
 torchvision = "*"
 opencv-python = "*"
 numpy = "*"
+torch = {version="*", index="torcharm"}
 
 [dev-packages]
 

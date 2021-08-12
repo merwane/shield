@@ -6,6 +6,7 @@
 #
 
 -i https://pypi.org/simple
+--extra-index-url https://torch.kmtea.eu/whl/stable.html
 aniso8601==9.0.1
 certifi==2021.5.30
 charset-normalizer==2.0.4; python_version >= '3'
@@ -22,6 +23,7 @@ itsdangerous==2.0.1; python_version >= '3.6'
 jinja2==3.0.1; python_version >= '3.6'
 markupsafe==2.0.1; python_version >= '3.6'
 mongoengine==0.23.1
+numpy==1.21.1
 opencv-python==4.5.3.56
 pillow==8.3.1; python_version >= '3.6'
 prompt-toolkit==1.0.14
