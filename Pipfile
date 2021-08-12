@@ -19,6 +19,10 @@ tqdm = "*"
 gunicorn = "*"
 pymongo = {extras = ["srv"],version = "*"}
 mongoengine = "*"
+torch = "*"
+torchvision = "*"
+opencv-python = "*"
+numpy = "*"
 
 [dev-packages]
 
