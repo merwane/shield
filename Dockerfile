@@ -13,6 +13,7 @@ RUN pip3 install setuptools_rust
 RUN pip3 install --no-cache-dir Cython
 RUN pip3 install numpy
 RUN pip3 install --upgrade pip
+RUN pip3 install torch -f https://torch.kmtea.eu/whl/stable.html
 RUN pip3 install -r /requirements.txt
 
 COPY . ./app
