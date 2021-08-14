@@ -7,6 +7,7 @@ class UploadFile(Resource):
     def post(self):
 
         labels = request.args.get('labels')
+        labels = labels.split(',')
 
         parse = reqparse.RequestParser()
         parse.add_argument('file',

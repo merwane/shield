@@ -60,7 +60,9 @@ class ShieldApi:
                 # add progress bar
                 with tqdm(total=file_size, unit="mb", colour='green', unit_scale=True, unit_divisor=1024) as t:
                     wrapped_file = CallbackIOWrapper(t.update, f, "read")
-                    endpoint = "{}?labels={}".format(endpoint, labels[0])
+
+                    labels_data = ','.join(labels)
+                    endpoint = "{}?labels={}".format(endpoint, labels_data)
                     r = requests.post(endpoint,
                     files={"file": wrapped_file})
         except ConnectionError:
