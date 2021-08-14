@@ -8,12 +8,16 @@ def all():
     all_files_list = []
     for f in files:
         file_size = round(f['size'], 2)
+        if f['labels'] == ['']:
+            labels = 0
+        else:
+            labels = f['labels']
         all_files_list.append([
             ">",
             f['filename'],
             str(file_size) + " mb",
             f['type'],
-            f['labels'],
+            labels,
             f['last_modified']
             ])
 
