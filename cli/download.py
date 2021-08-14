@@ -35,3 +35,23 @@ def delete_file():
         print('Done!')
         print("\n")
         restart()
+
+def nuke_everything():
+    confirmation_field = [{
+        'type': 'confirm',
+        'name': 'confirmation',
+        'message': 'Are you sure?'
+    }]
+
+    confirmation = prompt(confirmation_field)
+
+    if confirmation['confirmation'] == False:
+        print('Aborted...')
+        print("\n")
+        restart()
+    else:
+        r = api.delete_all_files()
+        if r == 200:
+            print('Done!')
+            print("\n")
+            restart()

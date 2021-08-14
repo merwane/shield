@@ -8,6 +8,7 @@ from cli.done import restart
 import os
 from file_handler.classifier.image_analysis import classify
 from file_handler.files_dir import list_files_in_dir
+from api.resources.files.query import get_all_files
 
 class ShieldApi:
     def __init__(self, api_url=API_URL):
@@ -81,7 +82,7 @@ class ShieldApi:
 
         print("Files found: {} \n".format(number_of_files))
 
-        for filepath in tqdm(all_files):
+        for filepath in tqdm(all_files, colour='green'):
             if os.path.isdir(filepath) == True:
                 pass
             else:
@@ -168,3 +169,14 @@ class ShieldApi:
             exit()
 
         return r.status_code
+    
+    def delete_all_files(self):
+        all_files = get_all_files()
+        endpoint = "{}/".format(self.api_url)
+
+        for filename in all_files:
+            requests.delete(endpoint, json={"filename": filename['filename']})
+        
+        r  = 200
+
+        return r

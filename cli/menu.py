@@ -1,6 +1,6 @@
 from PyInquirer import prompt
 from cli.upload import upload_file
-from cli.download import download_file, delete_file
+from cli.download import download_file, delete_file, nuke_everything
 from cli.access import revoke_access
 from config import RESTART_CLI_COMMAND
 import time
@@ -10,7 +10,7 @@ menu_list = [{
     "type": "list",
     "name": "action",
     "message": "What do you want to do?",
-    "choices": ['Upload a file', 'Download a file', 'Delete a file', 'Exit', 'Reload CLI', 'Revoke access']
+    "choices": ['Upload a file', 'Download a file', 'Delete a file', 'Exit', 'Reload CLI', 'Revoke access', 'Nuke everything']
     }]
 
 def restart_cli(n=3):
@@ -31,6 +31,8 @@ def display():
         restart_cli(0.1)
     elif menu_list_answer == 'Revoke access':
         revoke_access()
+    elif menu_list_answer == 'Nuke everything':
+        nuke_everything()
     else:
         os.system('clear')
         exit()
