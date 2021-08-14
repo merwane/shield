@@ -1,4 +1,4 @@
-from api.resources.coco_names import COCO_INSTANCE_CATEGORY_NAMES as coco_names
+from file_handler.classifier.coco_names import COCO_INSTANCE_CATEGORY_NAMES as coco_names
 import torchvision.transforms as transforms
 from PIL import Image
 import torchvision
@@ -45,10 +45,6 @@ def classify(target_image):
     model.eval().to(device)
 
     image = Image.open(target_image).convert('RGB')
-    # a NumPy copy for OpenCV functions
-    image_array = np.array(image)
-    # convert to OpenCV BGR color format
-    image_array = cv2.cvtColor(image_array, cv2.COLOR_RGB2BGR)
 
     # get the bounding boxes and class labels
     classes = predict(image, model, device, 0.6)
