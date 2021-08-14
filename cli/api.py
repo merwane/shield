@@ -7,6 +7,7 @@ from tqdm.utils import CallbackIOWrapper
 from cli.done import restart
 import os
 from file_handler.classifier.image_analysis import classify
+from file_handler.files_dir import list_files_in_dir
 
 class ShieldApi:
     def __init__(self, api_url=API_URL):
@@ -73,6 +74,43 @@ class ShieldApi:
 
         return r
     
+    def upload_dir_content(self, dirpath):
+        endpoint = "{}/".format(self.api_url)
+        all_files = list_files_in_dir(dirpath)
+
+        number_of_files = len(all_files)
+
+        print("Number of files found: {} \n".format(number_of_files))
+
+        for filepath in tqdm(all_files):
+            if os.path.isdir(filepath) == True:
+                pass
+            else:
+                file_size = os.stat(filepath).st_size
+                try:
+                    with open(filepath, "rb") as f:
+                        # get file type
+                        file_extension = os.path.splitext(f.name)[1]
+                        file_type = file_extension.replace(".", "")
+                        # check if it's an image
+                        if file_type in ['png', 'jpg', 'jpeg']:
+                            # initialize image classification
+                            labels = classify(filepath)
+                        else:
+                            labels = []
+                        
+                        labels_data = ','.join(labels)
+                        endpoint = "{}?labels={}".format(endpoint, labels_data)
+                        r = requests.post(endpoint,
+                        files={"file": open(filepath, 'rb')})
+                except ConnectionError:
+                    print("Error connecting to the Shield server... \n")
+                    exit()
+        
+        r = 200
+
+        return r
+
     def download_file(self, filename):
         filename = filename['filename']
         filename = filename.replace(" ", "")

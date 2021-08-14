@@ -58,3 +58,17 @@ def list_files_with_props():
             })
 
     return files
+
+# lists file in a given directory
+def list_files_in_dir(dirpath, extension=None):
+    if os.path.isdir(dirpath) == False:
+        raise Exception("Not a directory")
+    
+    if extension == None:
+        full_path = "{}/*".format(dirpath)
+    else:
+        full_path = "{}/*.{}".format(dirpath, extension)
+
+    files = glob.glob(full_path)
+
+    return files
