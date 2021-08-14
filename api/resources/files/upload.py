@@ -26,7 +26,7 @@ def upload_files(all_files, labels):
 
         # Add file to Files database
         file_type = file_extension.replace(".", "")
-        queue.enqueue(add_file, filename, file_size, file_type, labels, result_ttl=0)
+        queue.enqueue(add_file, filename, file_size, file_type, labels['labels'], result_ttl=0)
 
         filenames.append(filename)
     

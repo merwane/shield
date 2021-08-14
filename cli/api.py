@@ -6,6 +6,7 @@ from tqdm import tqdm
 from tqdm.utils import CallbackIOWrapper
 from cli.done import restart
 import os
+import json
 from file_handler.classifier.image_analysis import classify
 
 class ShieldApi:
@@ -60,10 +61,14 @@ class ShieldApi:
                 # add progress bar
                 with tqdm(total=file_size, unit="mb", colour='green', unit_scale=True, unit_divisor=1024) as t:
                     wrapped_file = CallbackIOWrapper(t.update, f, "read")
+
+                    payload = {"labels": labels}
+
                     r = requests.post(endpoint,
-                    files={"file": wrapped_file},
-                    headers={'Authorization': ENCRYPTION_KEY},
-                    json={'labels': labels})
+                    files={
+                        "file": (None, wrapped_file, 'application/octet-stream'),
+                        'json': (None, json.dumps(payload), 'application/json')
+                        })
         except ConnectionError:
             print("Error connecting to the Shield server... \n")
             exit()
