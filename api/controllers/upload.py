@@ -5,6 +5,9 @@ import werkzeug
 
 class UploadFile(Resource):
     def post(self):
+
+        labels = request.args.get('labels')
+
         parse = reqparse.RequestParser()
         parse.add_argument('file',
                 type=werkzeug.datastructures.FileStorage,
@@ -12,7 +15,6 @@ class UploadFile(Resource):
                 action='append')
         args = parse.parse_args()
         all_files = args.get('file')
-        labels = args.get('json')
 
         filenames = upload_files(all_files, labels)
 
