@@ -12,10 +12,11 @@ def all():
             ">",
             f['filename'],
             str(file_size) + " mb",
-            f['file_type'],
+            f['type'],
+            f['labels'],
             f['last_modified']
             ])
 
-    cli_list = tabulate(all_files_list, headers=["#", 'filename', 'size', 'type', 'modified'])
+    cli_list = tabulate(all_files_list, headers=["#", 'filename', 'size', 'type', 'labels', 'modified'])
     
     print(cli_list)

@@ -3,6 +3,7 @@ import glob
 from config import FILES_PATH
 from file_handler.info import File
 from file_handler.utils import datetime_to_string
+from api.resources.files.query import get_file_labels
 
 def list_files(extension=None, filenames_only=False):
     if extension == None:
@@ -40,11 +41,19 @@ def list_files_with_props():
         file_size = f.size('m')
         file_type = f.file_type()
         last_modified = f.last_modified()
+
+        # get labels
+        if file_type in ['png', 'jpg', 'jpeg']:
+            labels = get_file_labels(filename)
+        else:
+            labels = []
+
         files.append({
             "filename": filename,
             "filepath": filepath,
             "size": file_size,
             "file_type": file_type,
+            "labels": labels,
             "last_modified": datetime_to_string(last_modified)
             })
 

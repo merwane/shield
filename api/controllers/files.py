@@ -3,6 +3,7 @@ from file_handler.files_dir import list_files_with_props
 from services.queue_config import JobQueue
 from file_handler.manage import delete_file
 from api.resources.files.database_operations import delete_file_from_db
+from api.resources.files.query import get_all_files
 from flask import request
 from config import FILES_PATH
 
@@ -12,7 +13,7 @@ queue = job_queue.queue()
 
 class ListAllFiles(Resource):
     def get(self):
-        all_files = list_files_with_props()
+        all_files = get_all_files()
 
         return all_files
 

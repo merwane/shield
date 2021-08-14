@@ -34,9 +34,17 @@ def get_all_files(full_path=False, file_type=None, labels=None):
             filename = f['filename']
         data.append({
             "filename": filename,
-            "file_size": f['file_size'],
-            "file_type": f['file_type'],
-            "added_at": datetime_to_string(f['added_at'])
+            "size": f['file_size'],
+            "type": f['file_type'],
+            "labels": f['labels'],
+            "last_modified": datetime_to_string(f['added_at'])
         })
     
     return data
+
+def get_file_labels(filename):
+    labels = database.unique_file.find_one({
+        "filename": filename
+    }, {"labels": True})
+
+    return labels['labels']
