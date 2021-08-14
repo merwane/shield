@@ -24,7 +24,7 @@ def get_all_files(full_path=False, file_type=None, labels=None):
 
     # filter labels
     if labels != None:
-        query['labels'] = labels
+        query = {"labels": {'$in': labels}}
 
     all_files = database.unique_file.find(query)
     for f in all_files:
