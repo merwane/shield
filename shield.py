@@ -15,8 +15,8 @@ def main():
     # if password_check == True:
     #    pass
 
-    print("\n")
-    list_files.all()
+    # print("\n")
+    # list_files.all()
     print("\n")
     menu.display()
     ###
