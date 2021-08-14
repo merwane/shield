@@ -9,7 +9,7 @@ from file_handler.utils import bytesto
 job_queue = JobQueue('default')
 queue = job_queue.queue()
 
-def upload_files(all_files):
+def upload_files(all_files, labels):
     filenames = []
     for f in all_files:
         file_extension = os.path.splitext(f.filename)[1]
@@ -26,7 +26,7 @@ def upload_files(all_files):
 
         # Add file to Files database
         file_type = file_extension.replace(".", "")
-        queue.enqueue(add_file, filename, file_size, file_type, result_ttl=0)
+        queue.enqueue(add_file, filename, file_size, file_type, labels, result_ttl=0)
 
         filenames.append(filename)
     

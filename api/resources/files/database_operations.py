@@ -5,12 +5,12 @@ from services.database_config import Database
 client = Database()
 database = client.light()
 
-def add_file(filename, file_size, file_type):
-    # TODO: add image analysis here if it's a picture and save labels
+def add_file(filename, file_size, file_type, labels):
     unique_file = UniqueFile(
         filename=filename,
         file_size=file_size,
-        file_type=file_type
+        file_type=file_type,
+        labels=labels
     )
     unique_file.save()
 
@@ -21,7 +21,8 @@ def add_many(files_data):
             UniqueFile(
                 filename=f['filename'],
                 file_size=f['file_size'],
-                file_type=f['file_type']
+                file_type=f['file_type'],
+                labels=f['labels']
             )
         )
     

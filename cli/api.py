@@ -6,6 +6,7 @@ from tqdm import tqdm
 from tqdm.utils import CallbackIOWrapper
 from cli.done import restart
 import os
+from file_handler.classifier.image_analysis import classify
 
 class ShieldApi:
     def __init__(self, api_url=API_URL):
@@ -40,14 +41,29 @@ class ShieldApi:
         filepath = filepath.replace(" ", "")
 
         file_size = os.stat(filepath).st_size
+
         try:
             with open(filepath, "rb") as f:
+                # get file type
+                file_extension = os.path.splitext(f.name)[1]
+                file_type = file_extension.replace(".", "")
+
+                # check if it's an image
+                if file_type in ['png', 'jpg', 'jpeg']:
+                    # initialize image classification
+                    print("Starting image analysis ...\n")
+                    labels = classify(filepath)
+                    print("Done.\n")
+                else:
+                    labels = []
+
                 # add progress bar
                 with tqdm(total=file_size, unit="mb", colour='green', unit_scale=True, unit_divisor=1024) as t:
                     wrapped_file = CallbackIOWrapper(t.update, f, "read")
                     r = requests.post(endpoint,
                     files={"file": wrapped_file},
-                    headers={'Authorization': ENCRYPTION_KEY})
+                    headers={'Authorization': ENCRYPTION_KEY},
+                    json={'labels': labels})
         except ConnectionError:
             print("Error connecting to the Shield server... \n")
             exit()
