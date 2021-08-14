@@ -13,8 +13,8 @@ def upload_file():
     }]
 
     filepath = prompt(path_field)
-    if os.path.isdir(filepath) == True:
-        r = api.upload_dir_content(filepath)
+    if os.path.isdir(filepath['file_path']) == True:
+        r = api.upload_dir_content(filepath['file_path'])
     else:
         r = api.upload_file(filepath)
     

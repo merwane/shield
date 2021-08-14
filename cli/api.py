@@ -75,12 +75,11 @@ class ShieldApi:
         return r
     
     def upload_dir_content(self, dirpath):
-        endpoint = "{}/".format(self.api_url)
         all_files = list_files_in_dir(dirpath)
 
         number_of_files = len(all_files)
 
-        print("Number of files found: {} \n".format(number_of_files))
+        print("Files found: {} \n".format(number_of_files))
 
         for filepath in tqdm(all_files):
             if os.path.isdir(filepath) == True:
@@ -100,6 +99,7 @@ class ShieldApi:
                             labels = []
                         
                         labels_data = ','.join(labels)
+                        endpoint = "{}/".format(self.api_url)
                         endpoint = "{}?labels={}".format(endpoint, labels_data)
                         r = requests.post(endpoint,
                         files={"file": open(filepath, 'rb')})
