@@ -15,6 +15,8 @@ def list_files(extension=None, filenames_only=False):
         for path in files:
             if os.path.isdir(path):
                 pass
+            elif path == "{}/swapfile".format(FILES_PATH):
+                pass
             else:
                 filenames.append(path)
     else:
