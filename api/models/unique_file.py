@@ -6,4 +6,5 @@ class UniqueFile(Document):
     file_size = FloatField(default=0) # megabytes by default
     file_type = StringField()
     labels = ListField(default=[])
+    checksum = StringField()
     added_at = DateTimeField(default=datetime.datetime.utcnow)
