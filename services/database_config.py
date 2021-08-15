@@ -6,9 +6,9 @@ class Database:
     def __init__(self):
         self.host = DATABASE_HOST
         self.client = DATABASE_CLIENT
-        connect(DATABASE_CLIENT, host=DATABASE_HOST, retryWrites=False, tls=False, tlsAllowInvalidCertificates=True, authSource="admin")
+        connect(DATABASE_CLIENT, host=DATABASE_HOST, retryWrites=False, tls=False, tlsAllowInvalidCertificates=True)
 
     def light(self):
-        client = pymongo.MongoClient(host=self.host, retryWrites=False, tls=False, tlsAllowInvalidCertificates=True, authSource="admin")
+        client = pymongo.MongoClient(host=self.host, retryWrites=False, tls=False, tlsAllowInvalidCertificates=True)
         database = client[self.client]
         return database
