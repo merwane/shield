@@ -19,3 +19,14 @@ services:
     restart: always
     volumes:
       - /mnt/ext/:/data
+  database_server:
+    image: arm64v8/mongo
+    ports:
+      - "27017:27017"
+    container_name: database_server
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=god
+      - MONGO_INITDB_ROOT_PASSWORD=god123
+      - MONGO_INITDB_DATABASE=shield
+    volumes:
+      - ~/data:/data/db
