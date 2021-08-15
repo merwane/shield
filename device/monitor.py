@@ -23,7 +23,7 @@ def file_count():
     for f in files:
         if os.path.isdir(f):
             pass
-        elif path == "{}/swapfile".format(FILES_PATH):
+        elif f == "{}/swapfile".format(FILES_PATH):
             pass
         else:
             file_n.append(f)
