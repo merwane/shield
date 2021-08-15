@@ -22,7 +22,7 @@ services:
     volumes:
       - /mnt/ext/:/data
   database_server:
-    image: mongo:latest
+    image: mongo:bionic
     ports:
       - "27017:27017"
     container_name: database_server
