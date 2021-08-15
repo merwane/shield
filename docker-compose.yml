@@ -4,6 +4,7 @@ services:
     build:
       context: './'
       dockerfile: 'Dockerfile'
+    container_name: shield_server
     ports:
       - "8000:8000"
     restart: always
@@ -14,6 +15,7 @@ services:
     build:
       context: './basic_file_server/'
       dockerfile: 'Dockerfile'
+    container_name: basic_file_server
     ports:
       - "8001:8001"
     restart: always
