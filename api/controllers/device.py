@@ -22,5 +22,6 @@ class DeviceMonitor(Resource):
         res['uptime'] = monitor.uptime()
         res['cpu_usage'] = monitor.cpu_usage()
         res['memory_usage'] = monitor.memory_usage().percent
+        res['file_count'] = monitor.file_count()
 
         return res

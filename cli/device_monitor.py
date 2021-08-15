@@ -18,11 +18,13 @@ def check_device():
     uptime = device_data['uptime']
     cpu_usage = device_data['cpu_usage']
     memory_usage = device_data['memory_usage']
+    file_count = device_data['file_count']
     # display
     print_static_progress_bar("CPU   ", cpu_usage, "", "blue")
     print_static_progress_bar("Memory", memory_usage, "", "red")
     print("")
     print("Uptime: {} hours".format(uptime))
+    print("Total files: {}".format(file_count))
 
 def display():
     # disk data
