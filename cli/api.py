@@ -75,7 +75,7 @@ class ShieldApi:
 
         return r
     
-    def upload_dir_content(self, dirpath):
+    def upload_dir_content(self, dirpath, classification=True):
         all_files = list_files_in_dir(dirpath)
 
         number_of_files = len(all_files)
@@ -93,7 +93,7 @@ class ShieldApi:
                         file_extension = os.path.splitext(f.name)[1]
                         file_type = file_extension.replace(".", "")
                         # check if it's an image
-                        if file_type in ['png', 'jpg', 'jpeg']:
+                        if file_type in ['png', 'jpg', 'jpeg'] and classification:
                             # initialize image classification
                             labels = classify(filepath)
                         else:

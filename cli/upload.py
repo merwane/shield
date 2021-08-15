@@ -12,9 +12,18 @@ def upload_file():
         'message': 'Enter a file or directory path'
     }]
 
+    classification_field = [{
+        'type': 'confirm',
+        'name': 'classification_field',
+        'message': 'Classify images?'
+    }]
+
     filepath = prompt(path_field)
     if os.path.isdir(filepath['file_path']) == True:
-        r = api.upload_dir_content(filepath['file_path'])
+        classification = prompt(classification_field)
+        classification = classification['classification_field']
+        
+        r = api.upload_dir_content(filepath['file_path'], classification=classification)
     else:
         r = api.upload_file(filepath)
     
